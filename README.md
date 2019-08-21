@@ -2,14 +2,14 @@
 Install Python on your workstation from https://www.python.org/
 
 
-Install scrapy and its dependencies
+# Install scrapy and its dependencies
 pip install Scrapy
 
-Clone project files to your local workstation
+# Clone project files to your local workstation
 
-Change directory to the "tutorial" folder with the scrapy.cfg file
+# Change directory to the "tutorial" folder with the scrapy.cfg file
 
-Run
+# Run
 scrapy crawl quotes -o stocks.csv
 
 
