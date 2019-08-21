@@ -13,5 +13,6 @@ class TutorialItem(scrapy.Item):
     # name = scrapy.Field()
     optionschain = scrapy.Field()
     lastprice = scrapy.Field()
+    currentstockprice = scrapy.Field()
 
     pass
