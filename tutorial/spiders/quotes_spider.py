@@ -1,5 +1,6 @@
 import scrapy
 from ..items import TutorialItem
+from datetime import date
 
 
 class QuotesSpider(scrapy.Spider):
@@ -25,19 +26,25 @@ class QuotesSpider(scrapy.Spider):
     def parse(self, response):
         items = TutorialItem()
         currentstockprice = response.xpath('//div[@id="qwidget_lastsale"]/text()').get()
-        print(currentstockprice)
         rows = response.xpath('//div [@class="OptionsChain-chart borderAll thin"]/table/tr')
         items['currentstockprice'] = currentstockprice
         
+        
         for row in rows:
-            
-             args = (row.xpath('td/a/@href').get(),row.xpath('td/text()').get())
-             print('Option chain url %r and last price %r' % args)
+             print(row)
+             args = (row.xpath('td/a/@href').get(),row.xpath('td/text()').get(),row.xpath('td[9]/text()').get())
+             print('Option chain url %r and last price %r and Strike prices is %r' % args)
              optionschainscrap = row.xpath('td/a/@href').get()
              lastprice = row.xpath('td/text()').get()
+             strikeprice=row.xpath('td[9]/text()').get()
+             expirationdate=row.xpath('td/a/text()').get()
              optionschain=optionschainscrap[48:63]
+             today = date.today()
              items['optionschain'] = optionschain
              items ['lastprice'] = lastprice
+             items ['strikeprice']=strikeprice
+             items['expirationdate']=expirationdate
+             items['todaysdate']=today
              
              yield items
         
@@ -51,4 +58,5 @@ class QuotesSpider(scrapy.Spider):
             
               
         
-        
+        # //*[@id="optionchain"]/div[5]/table/tbody/tr[1]/td[9]
+        # //*[@id="optionchain"]/div[5]/table/tbody/tr[2]/td[9]

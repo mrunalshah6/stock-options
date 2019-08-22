@@ -14,5 +14,8 @@ class TutorialItem(scrapy.Item):
     optionschain = scrapy.Field()
     lastprice = scrapy.Field()
     currentstockprice = scrapy.Field()
+    strikeprice=scrapy.Field()
+    expirationdate=scrapy.Field()
+    todaysdate=scrapy.Field()
 
     pass
