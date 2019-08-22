@@ -46,6 +46,7 @@ class QuotesSpider(scrapy.Spider):
              items['expirationdate']=expirationdate
              items['todaysdate']=today
              
+             
              yield items
         
         next_page = response.xpath ('//*[@id="quotes_content_left_lb_NextPage"]/@href').get()
