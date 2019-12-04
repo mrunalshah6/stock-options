@@ -1,2 +1,5 @@
 
 stocks.csv
+*.csv
+*.pyc
+*.pyc
