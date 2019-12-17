@@ -12,8 +12,9 @@ class TutorialItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     optionschain = scrapy.Field()
-    lastprice = scrapy.Field()
     strikeprice=scrapy.Field()
+    lastprice = scrapy.Field()
+    volume = scrapy.Field()
     todaysdate=scrapy.Field()
 
     pass

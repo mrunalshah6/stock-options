@@ -44,9 +44,9 @@ class QuotesSpider(scrapy.Spider):
                 today = date.today()
                 #print("Today's date {}".format(today))
                 items['optionschain'] = optionschain
-                items ['lastprice'] = lastprice
                 items ['strikeprice']=strikeprice
-                #items['expirationdate']=expirationdate
+                items ['lastprice'] = lastprice
+                items['volume'] = volume
                 items['todaysdate']=today
                 yield items
 
