@@ -8,7 +8,7 @@ import json
 class QuotesSpider(scrapy.Spider):
     name = "quotes"
     val = input("Enter stock symbol of interest: ") 
-    r = requests.get('https://query2.finance.yahoo.com/v7/finance/options/{}?formatted=true&crumb=whhcJDUUyvF&lang=en-US&region=US&straddle=false&corsDomain=finance.yahoo.com'.format(val))
+    r = requests.get('https://query2.finance.yahoo.com/v7/finance/options/{}?formatted=true&lang=en-US&region=US&straddle=false&corsDomain=finance.yahoo.com'.format(val))
     json_data = json.loads(r.text)
     results = json_data['optionChain']['result'][0]
     
@@ -26,7 +26,10 @@ class QuotesSpider(scrapy.Spider):
                   'https://finance.yahoo.com/quote/{}/options?p={}&straddle=false&date={}'.format(val,val,results['expirationDates'][7]),
                   'https://finance.yahoo.com/quote/{}/options?p={}&straddle=false&date={}'.format(val,val,results['expirationDates'][8]),
                   'https://finance.yahoo.com/quote/{}/options?p={}&straddle=false&date={}'.format(val,val,results['expirationDates'][9]),
-                  'https://finance.yahoo.com/quote/{}/options?p={}&straddle=false&date={}'.format(val,val,results['expirationDates'][10])]
+                  'https://finance.yahoo.com/quote/{}/options?p={}&straddle=false&date={}'.format(val,val,results['expirationDates'][10]),
+                  'https://finance.yahoo.com/quote/{}/options?p={}&straddle=false&date={}'.format(val,val,results['expirationDates'][11]),
+                  ]
+
 
     def parse(self, response):
         items = TutorialItem()
