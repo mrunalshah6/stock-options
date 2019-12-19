@@ -1,3 +1,5 @@
+#Reminder this repo is for educational and personal use only
+
 # stock-options
 Install Python on your workstation from https://www.python.org/
 
